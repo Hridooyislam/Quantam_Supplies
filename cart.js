@@ -11,7 +11,22 @@ document.getElementById('K-accesories-p-btn').addEventListener('click',function 
     cart_list.appendChild(li);
     total_sell+=product_price;
     cart_total_price.innerText=total_sell;
-    console.log(cart_list.innerText);
+    if (cart_total_price.innerText>0) {
+        document.getElementById('purchase-btn').removeAttribute('disabled');
+    }
+    if (cart_total_price.innerText>=200) {
+        document.getElementById('cupon_btn').removeAttribute('disabled');
+        if (document.getElementById('cupon_btn').value==='SELL200') {
+            const discunt=cart_total_price*(20/100);
+            document.getElementById('cupon_btn').addEventListener('click',function(){        
+                cart_total_price.innerText=cart_total_price-discunt;
+            })
+        }
+    }
+    
+
+
+    
 })
 
 document.getElementById('k-accesories-2-p-btn').addEventListener('click',function K_accesories(){
@@ -97,8 +112,8 @@ document.getElementById('flexible-sofa-p-btn').addEventListener('click',function
 })
 // --------------------------------------------------------
 
-
-console.log(cart_total_price.innerText);
+console.log(cart_list.innerText);
+console.log(total_sell);
 if (cart_total_price.innerText>0) {
     console.log('ok');
     document.getElementById('purchase-btn').removeAttribute('disabled');
